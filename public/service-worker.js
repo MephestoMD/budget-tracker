@@ -5,15 +5,18 @@ const FILES_TO_CACHE = [
   "/",
   "/index.html",
   "/style.css",
-  "./icons/icon-192x192.png",
-  "./icons/icon-512x512.png",
+  "/icons/icon-192x192.png",
+  "/icons/icon-512x512.png",
+  "manifest.json",
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
       .open(CACHE_NAME)
-      .then((cache) => cache.addAll(FILES_TO_CACHE))
+      .then(function (cache) {
+        return cache.addAll(FILES_TO_CACHE);
+      })
       .then(self.skipWaiting())
   );
 });

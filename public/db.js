@@ -59,7 +59,7 @@ const saveRecord = (record) => {
   const transaction = db.transaction(["pending"], "readwrite");
 
   // Access object store
-  const objStore = transaction.objectStore("BudgetStore");
+  const objStore = transaction.objectStore("pending");
 
   // Add a new record to the store
   objStore.add(record);
